@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legado do Fogo - Naruto RPG</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&amp;family=Epilogue:wght@700;800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0d0e0f",
+                      "tertiary-fixed": "#ffdad2",
+                      "on-error-container": "#ffdad6",
+                      "secondary-container": "#4c4733",
+                      "on-secondary-fixed-variant": "#4c4733",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdbcb",
+                      "on-surface": "#e3e2e3",
+                      "surface": "#121314",
+                      "inverse-on-surface": "#303031",
+                      "on-tertiary": "#611200",
+                      "on-background": "#e3e2e3",
+                      "on-primary-fixed": "#341100",
+                      "inverse-primary": "#9f4200",
+                      "background": "#121314",
+                      "surface-dim": "#121314",
+                      "secondary": "#cec6ad",
+                      "outline-variant": "#584238",
+                      "secondary-fixed-dim": "#cec6ad",
+                      "on-error": "#690005",
+                      "outline": "#a68b7e",
+                      "surface-bright": "#38393a",
+                      "on-tertiary-fixed-variant": "#822710",
+                      "surface-container-highest": "#343536",
+                      "tertiary-container": "#e87355",
+                      "on-tertiary-fixed": "#3c0800",
+                      "surface-container-high": "#292a2b",
+                      "surface-container-low": "#1b1c1d",
+                      "on-surface-variant": "#dfc0b2",
+                      "inverse-surface": "#e3e2e3",
+                      "secondary-fixed": "#ebe2c8",
+                      "on-tertiary-container": "#5d1100",
+                      "surface-variant": "#343536",
+                      "primary": "#ffb692",
+                      "on-primary-fixed-variant": "#793100",
+                      "surface-container": "#1f2021",
+                      "on-secondary": "#35301e",
+                      "on-primary": "#552000",
+                      "on-secondary-fixed": "#1f1c0b",
+                      "tertiary": "#ffb4a2",
+                      "error-container": "#93000a",
+                      "on-secondary-container": "#bdb59c",
+                      "primary-fixed-dim": "#ffb692",
+                      "primary-container": "#ee7125",
+                      "surface-tint": "#ffb692",
+                      "on-primary-container": "#511e00",
+                      "tertiary-fixed-dim": "#ffb4a2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "32px",
+                      "unit": "4px",
+                      "scroll-width": "800px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-xl": [
+                              "Epilogue"
+                      ],
+                      "body-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-md": [
+                              "Epilogue"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #121314;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+        }
+
+        .embers-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(238, 113, 37, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 182, 146, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(159, 66, 0, 0.05) 0%, transparent 60%);
+            animation: breath 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes breath {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        .parchment-texture {
+            background-color: rgba(223, 192, 178, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.15"/%3E%3C/svg%3E');
+            color: #e3e2e3;
+            box-shadow: 0 0 25px rgba(238, 113, 37, 0.15), inset 0 0 15px rgba(238, 113, 37, 0.05);
+            border: 1px solid rgba(238, 113, 37, 0.3);
+        }
+
+        .brush-stroke {
+            position: relative;
+        }
+        
+        .brush-stroke::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #ee7125;
+            mask-image: url('data:image/svg+xml,%3Csvg preserveAspectRatio="none" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0,5 Q20,2 40,7 T80,3 T100,5 L100,10 L0,10 Z"/%3E%3C/svg%3E');
+            -webkit-mask-image: url('data:image/svg+xml,%3Csvg preserveAspectRatio="none" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0,5 Q20,2 40,7 T80,3 T100,5 L100,10 L0,10 Z"/%3E%3C/svg%3E');
+            mask-size: 100% 100%;
+            -webkit-mask-size: 100% 100%;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes navStagger {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-stagger { 
+            opacity: 0; 
+            animation: navStagger 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+        }
+
+        .nav-scroll-link {
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(166, 139, 126, 0.2);
+            backdrop-filter: blur(4px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .nav-scroll-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0; height: 1px;
+            background: #ffb692;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px #ee7125;
+        }
+
+        .nav-scroll-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-scroll-link:hover {
+            background: rgba(238, 113, 37, 0.08);
+            border-color: rgba(255, 182, 146, 0.4);
+            color: #ffb692;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(238, 113, 37, 0.1);
+        }
+
+        .nav-scroll-link.active {
+            background: rgba(238, 113, 37, 0.15);
+            border-color: #ee7125;
+            color: #ffb692;
+            box-shadow: inset 0 0 10px rgba(238, 113, 37, 0.2);
+        }
+
+        .nav-scroll-link.active::before {
+            width: 100%;
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md relative">
+<!-- Atmospheric Background -->
+<div class="embers-bg"></div>
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_8px_32px_rgba(0,0,0,0.6)] full-width top-0 sticky z-50 transition-all duration-500">
+<div class="flex justify-between items-center px-margin py-4 w-full max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-widest hover:text-primary-fixed-dim transition-all duration-500 cursor-pointer select-none">
+                Legado do Fogo
+            </div>
+<nav class="hidden md:flex gap-4 items-center">
+<a class="nav-scroll-link nav-stagger text-on-surface-variant font-label-caps text-label-caps rounded-sm" href="#" style="animation-delay: 0.1s;">Clãs e Famílias</a>
+<a class="nav-scroll-link nav-stagger text-on-surface-variant font-label-caps text-label-caps rounded-sm" href="#" style="animation-delay: 0.2s;">Patentes</a>
+<a class="nav-scroll-link nav-stagger text-on-surface-variant font-label-caps text-label-caps rounded-sm" href="#" style="animation-delay: 0.3s;">Regras</a>
+<a class="nav-scroll-link active nav-stagger font-label-caps text-label-caps rounded-sm" href="#" style="animation-delay: 0.4s;">Ambientação</a>
+<a class="nav-scroll-link nav-stagger text-on-surface-variant font-label-caps text-label-caps rounded-sm" href="#" style="animation-delay: 0.5s;">Privilégios</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center py-12 px-gutter lg:px-margin z-10">
+<!-- Hero Logo Section -->
+<section class="w-full max-w-scroll-width mb-16 flex justify-center animate-fade-in-up">
+<div class="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-primary/80 shadow-[0_0_50px_rgba(238,113,37,0.5)] bg-surface-container/80 backdrop-blur-sm group hover:shadow-[0_0_80px_rgba(238,113,37,0.8)] transition-shadow duration-700">
+<img alt="Legado do Fogo RPG Logo" class="w-full h-full object-cover mix-blend-screen opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0ugutMAE--1bXIRhREB0_W2A6e74DJ6bvrDW-fb0yNcnfvHCKJBI4MuJJSKy1OhryUYnxohkfs0u44B3Z83gXZEBHFkCjUAjjAoSI1hVrrCQsGuvwp3yzTWg85wCOoHW705T3Zp4Qb25zxnmehzMCNe1qa43_gr3p9M_3yCuf3J9oGmYEbwXTzMqmmvr1sPs_xQjNQDIzn3BC6ORlCGKDN3Bk08FDrZ7l2SWthKft49n1hw_7EBUzqqegxLaVuLeEqCHAz4_as2_0Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 rounded-full border-[4px] border-primary/20 mix-blend-overlay"></div>
+</div>
+</section>
+<!-- Lore Scroll (Bento/Card Layout) -->
+<section class="w-full max-w-scroll-width">
+<div class="flex flex-col gap-8">
+<!-- Title Header -->
+<div class="text-center mb-8 animate-fade-in-up delay-100">
+<h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-4 brush-stroke inline-block drop-shadow-[0_0_10px_rgba(255,218,210,0.3)]">As Cinzas da Guerra</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto italic">
+                        O silêncio que sucedeu o conflito não era de paz, mas de segredos enterrados sob a fumaça.
+                    </p>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 animate-fade-in-up delay-200">
+<!-- Main Text Block -->
+<div class="md:col-span-12 parchment-texture rounded-xl p-8 md:p-12 relative overflow-hidden border-y-[6px] border-primary/40"><div class="w-full mb-8 flex justify-center">
+<div class="relative group">
+<img alt="Ninjas of the Great War" class="rounded-lg border-2 border-primary/50 shadow-[0_0_20px_rgba(238,113,37,0.3)] max-h-[300px] w-full object-cover md:object-contain transition-transform duration-500 group-hover:scale-[1.01]" src="https://lh3.googleusercontent.com/aida/ADBb0uhaROdFm_ff8x9uMbD1Xf1deXwAIbLH1Kvy6-7u-WOaqyRP-K_yfzCsJK0hsd2-JriXdCdKyHf0_q7kJZxZ5U-W6t6jgl2VcCctbJe3NJmFEC3B1sqBKBjozkq701VVDU-eVgm5zoSK7q_LcNzekbvmhSxm6uvpgGk2EPXjePyH2DWyXzq7mgaMgHwk0RT8g9M_hR2xtr5Kyu2ALHf_PVB-grXjmua2SnqMLS0Bx3bW_ToU15hbMO2TUVw0_RXYc-gtQggpD5uAKZ0"/>
+<div class="absolute inset-0 rounded-lg border border-white/10 pointer-events-none"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent"></div>
+</div>
+</div>
+<!-- Decorative Scroll Handles -->
+<div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<div class="columns-1 md:columns-2 gap-8 text-on-surface space-y-6">
+<p class="first-letter:text-5xl first-letter:font-headline-md first-letter:text-primary-container first-letter:mr-2 first-letter:float-left first-letter:drop-shadow-[0_0_8px_rgba(238,113,37,0.8)]">
+                                Ninguém sabe ao certo se foi realmente bom que uma nova geração tenha nascido logo depois de uma guerra ninja daquela escala. Em Konoha, o período que veio após o conflito ficou marcado mais pelo total silêncio. A chamada Segunda Guerra Ninja foi inevitável: o Clã Shimura, movido por ambição política, articulou uma aliança com a Vila Oculta da Areia e levou a vila a um conflito que poderia ter sido evitado.
+                            </p>
+<p>
+                                No meio disso tudo, quem assumiu o comando foi Homura Sarutobi, recém-nomeada Hokage aos 29 anos. Jovem para o cargo, mas firme o suficiente. Sob sua liderança, Konoha resistiu e agiu com força contra isso. Ela conduziu operações diretas, eliminou lideranças inimigas e recuperou o controle da situação em pouco tempo, ganhando respeito dentro e fora da vila.
+                            </p>
+<p>
+                                Com o avanço da guerra, Homura começou a reorganizar o equilíbrio interno de poder. O Clã Hyuuga passou a ser um dos principais aliados do governo, fortalecendo sua posição dentro da vila. Outros clãs aceitaram a nova estrutura, mesmo que com ressalvas. O problema maior estava no Clã Uchiha. Já existia desconfiança antiga em relação a eles, e durante a guerra isso só piorou. Rumores de proximidade com os Shimura começaram a circular, nunca confirmados, mas suficientes para justificar decisões mais duras.
+                            </p>
+<p>
+                                Os Uchihas foram colocados nas missões mais arriscadas, sempre na linha de frente, em batalhas onde a chance de retorno era mínima. Oficialmente, eram escolhidos por sua força. Na prática, poucos voltavam. Com o tempo, o número de membros do clã caiu drasticamente, sem que isso fosse questionado de forma aberta. Quando a guerra terminou, a versão que ficou registrada foi a de que eles haviam se sacrificado pela vila.
+                            </p>
+<p>
+                                Após o fim do conflito, Homura Sarutobi foi reconhecida como a principal responsável pela vitória. O título de “Deusa Shinobi” não surgiu por acaso, era o reflexo da imagem que foi construída dela: alguém que conseguiu sustentar uma guerra inteira e sair vitoriosa, mesmo sendo tão jovem. Mas o que ficou não foi exatamente estabilidade.
+                            </p>
+<p class="font-bold border-l-4 border-primary-container pl-4 bg-surface-container-highest/30 py-2 rounded-r pr-2 shadow-inner">
+                                O Clã Hyuuga continuou dividido internamente, mantendo sua hierarquia de forma ainda mais rígida. O Clã Senju se afastou da política, preferindo o isolamento. E o Clã Uchiha praticamente deixou de existir como antes, restaram poucos, espalhados, sem a mesma influência.
+                            </p>
+<p>
+                                A nova geração cresceu nesse cenário: uma vila reconstruída por fora, mas ainda carregando decisões mal resolvidas por dentro. A guerra acabou, mas o que levou até ela e o que foi feito durante ela nunca foi completamente esclarecido.
+                            </p>
+</div>
+</div>
+<!-- Sidebar Stats / Chips (Simulating HUD elements) -->
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+</body></html>
